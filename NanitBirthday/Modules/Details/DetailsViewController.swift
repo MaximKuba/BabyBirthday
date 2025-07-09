@@ -5,19 +5,23 @@
 //  Created by Maksym Kuba on 09/07/2025.
 //
 
-
 import UIKit
 
-
 class DetailsViewController: UIViewController {
+    
+    // MARK: - @IBOutlets
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var birthdayPicker: UIDatePicker!
     @IBOutlet weak var babyImageView: UIImageView!
     @IBOutlet weak var showBirthdayButton: UIButton!
     
+    // MARK: - Properties
+    
     private var presenter: DetailsPresenter!
     let imagePickerManager = ImagePickerManager()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +33,13 @@ class DetailsViewController: UIViewController {
         presenter.getInfo()
     }
     
+    // MARK: - Funcs
+    
     private func setup() {
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapChangePhoto))
         babyImageView.addGestureRecognizer(tap)
         babyImageView.isUserInteractionEnabled = true
-        
         nameTextField.addTarget(self, action: #selector(nameChanged), for: .editingChanged)
         birthdayPicker.addTarget(self, action: #selector(birthdayChanged), for: .valueChanged)
         
@@ -46,6 +52,8 @@ class DetailsViewController: UIViewController {
         }
     }
     
+    // MARK: - Actions
+    
     @objc func didTapChangePhoto() {
         imagePickerManager.present(from: self) { [weak self] image in
             self?.presenter?.updateImage(image)
@@ -54,7 +62,6 @@ class DetailsViewController: UIViewController {
     
     
     @IBAction func didTapShowBirthday(_ sender: UIButton) {
-        
         presenter.didTapShowBirthday()
     }
     
@@ -66,6 +73,8 @@ class DetailsViewController: UIViewController {
         presenter.updateBirthday(birthdayPicker.date)
     }
 }
+
+// MARK: - DetailsView
 
 extension DetailsViewController: DetailsView {
     

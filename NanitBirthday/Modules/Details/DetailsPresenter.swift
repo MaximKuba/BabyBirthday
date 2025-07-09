@@ -9,6 +9,7 @@
 import UIKit
 
 class DetailsPresenter {
+    
     weak var view: DetailsView?
     private var baby: BabyInfo
     
