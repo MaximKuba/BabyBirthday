@@ -3,6 +3,8 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,15 +21,15 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NanitBirthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvZ-0v-mr0">
                                 <rect key="frame" x="125.33333333333333" y="79" width="142.66666666666669" height="26.333333333333329"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Baby name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VdB-zZ-snZ">
-                                <rect key="frame" x="146.66666666666666" y="125.33333333333331" width="99.666666666666657" height="40"/>
+                                <rect key="frame" x="136.66666666666666" y="125.33333333333331" width="119.66666666666666" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="mnT-pr-T2h"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker contentMode="scaleAspectFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="rml-Uy-GjP">
@@ -51,12 +53,13 @@
                                     <action selector="didTapShowBirthday:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cFd-1h-B67"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultGreenIcon" translatesAutoresizingMaskIntoConstraints="NO" id="6f0-we-zSN">
-                                <rect key="frame" x="121.66666666666669" y="239.66666666666663" width="150" height="150"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6f0-we-zSN">
+                                <rect key="frame" x="121.66666666666669" y="237" width="150" height="155.33333333333337"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="JM0-vR-V5q"/>
                                     <constraint firstAttribute="width" constant="150" id="jrl-UO-PWw"/>
                                 </constraints>
+                                <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="75"/>
@@ -90,9 +93,148 @@
             </objects>
             <point key="canvasLocation" x="132" y="-34"/>
         </scene>
+        <!--Birthday View Controller-->
+        <scene sceneID="VOl-Tt-LL7">
+            <objects>
+                <viewController storyboardIdentifier="BirthdayViewController" id="SbI-Od-tj3" customClass="BirthdayViewController" customModule="NanitBirthday" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lLi-lA-tGd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultGreenIcon" translatesAutoresizingMaskIntoConstraints="NO" id="MH6-A5-pBX">
+                                <rect key="frame" x="96.666666666666686" y="326" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MH6-A5-pBX" secondAttribute="height" multiplier="1:1" id="rN9-f4-H6K"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="125"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backGroundGreen" translatesAutoresizingMaskIntoConstraints="NO" id="a52-1U-QOM">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHk-gI-CJ4">
+                                <rect key="frame" x="20" y="79" width="22.333333333333329" height="21"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="closeTapped:" destination="SbI-Od-tj3" eventType="touchUpInside" id="uy0-gl-J8y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Kl-fz-AHR">
+                                <rect key="frame" x="345.33333333333331" y="79" width="27.666666666666686" height="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="shareplay" catalog="system"/>
+                                <connections>
+                                    <action selector="shareTapped:" destination="SbI-Od-tj3" eventType="touchUpInside" id="C6n-Px-Gcb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODAY Cristiano IS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c60-ZV-9gl">
+                                <rect key="frame" x="66" y="147" width="277" height="25.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                <color key="textColor" name="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="gnh-2f-Ngx">
+                                <rect key="frame" x="101.66666666666669" y="185.33333333333334" width="190" height="90.000000000000028"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftSwirl" translatesAutoresizingMaskIntoConstraints="NO" id="VRK-7Y-GjQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="52" height="90"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="ryp-VP-stu">
+                                        <rect key="frame" x="63.999999999999986" y="0.0" width="62" height="90"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightSwirl" translatesAutoresizingMaskIntoConstraints="NO" id="vsj-eH-ahp">
+                                        <rect key="frame" x="138" y="0.0" width="52" height="90"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MONTH OLD!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVj-Fp-EXz">
+                                <rect key="frame" x="50" y="289.33333333333331" width="293" height="21.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <color key="textColor" name="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nanitLogo" translatesAutoresizingMaskIntoConstraints="NO" id="P4Y-GE-gXN">
+                                <rect key="frame" x="167" y="541" width="59" height="20"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THb-Ap-hKt">
+                                <rect key="frame" x="178.66666666666666" y="408" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="nUp-UL-ihm"/>
+                                    <constraint firstAttribute="width" constant="36" id="zx8-su-2re"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="blueCamera"/>
+                                <connections>
+                                    <action selector="cameraTaped:" destination="SbI-Od-tj3" eventType="touchUpInside" id="ZoX-jA-lyN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bcy-Ti-wEw"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="bcy-Ti-wEw" firstAttribute="trailing" secondItem="sVj-Fp-EXz" secondAttribute="trailing" constant="50" id="3wQ-8e-M4y"/>
+                            <constraint firstItem="THb-Ap-hKt" firstAttribute="centerX" secondItem="MH6-A5-pBX" secondAttribute="centerX" id="4IE-Rn-Rks"/>
+                            <constraint firstItem="sVj-Fp-EXz" firstAttribute="top" secondItem="gnh-2f-Ngx" secondAttribute="bottom" constant="14" id="6IL-dd-FGy"/>
+                            <constraint firstItem="bcy-Ti-wEw" firstAttribute="trailing" secondItem="0Kl-fz-AHR" secondAttribute="trailing" constant="20" id="B6l-zV-Trb"/>
+                            <constraint firstItem="BHk-gI-CJ4" firstAttribute="top" secondItem="bcy-Ti-wEw" secondAttribute="top" constant="20" id="FEe-V8-Gyq"/>
+                            <constraint firstItem="a52-1U-QOM" firstAttribute="top" secondItem="lLi-lA-tGd" secondAttribute="top" id="Hze-Et-fkm"/>
+                            <constraint firstItem="bcy-Ti-wEw" firstAttribute="trailing" secondItem="c60-ZV-9gl" secondAttribute="trailing" constant="50" id="JaR-JT-k9J"/>
+                            <constraint firstItem="MH6-A5-pBX" firstAttribute="centerX" secondItem="lLi-lA-tGd" secondAttribute="centerX" id="Jkh-0K-mMW"/>
+                            <constraint firstItem="sVj-Fp-EXz" firstAttribute="leading" secondItem="bcy-Ti-wEw" secondAttribute="leading" constant="50" id="LFW-dQ-WpV"/>
+                            <constraint firstItem="0Kl-fz-AHR" firstAttribute="top" secondItem="bcy-Ti-wEw" secondAttribute="top" constant="20" id="Mr9-Rb-xqw"/>
+                            <constraint firstItem="BHk-gI-CJ4" firstAttribute="leading" secondItem="bcy-Ti-wEw" secondAttribute="leading" constant="20" id="Ptv-N7-jTG"/>
+                            <constraint firstAttribute="bottom" secondItem="a52-1U-QOM" secondAttribute="bottom" id="QP1-lH-DOF"/>
+                            <constraint firstItem="a52-1U-QOM" firstAttribute="leading" secondItem="bcy-Ti-wEw" secondAttribute="leading" id="RFh-w6-PHd"/>
+                            <constraint firstItem="MH6-A5-pBX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bcy-Ti-wEw" secondAttribute="leading" constant="50" id="ZwP-GH-MaN"/>
+                            <constraint firstItem="gnh-2f-Ngx" firstAttribute="top" secondItem="c60-ZV-9gl" secondAttribute="bottom" constant="13" id="cZk-mT-rBG"/>
+                            <constraint firstItem="MH6-A5-pBX" firstAttribute="centerY" secondItem="lLi-lA-tGd" secondAttribute="centerY" priority="750" id="e37-n2-2m2"/>
+                            <constraint firstItem="bcy-Ti-wEw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MH6-A5-pBX" secondAttribute="trailing" constant="50" id="eAx-3X-jwg"/>
+                            <constraint firstItem="c60-ZV-9gl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bcy-Ti-wEw" secondAttribute="top" constant="20" id="f7P-Oi-r9U"/>
+                            <constraint firstItem="gnh-2f-Ngx" firstAttribute="centerX" secondItem="lLi-lA-tGd" secondAttribute="centerX" id="ify-ll-zt5"/>
+                            <constraint firstItem="P4Y-GE-gXN" firstAttribute="top" secondItem="MH6-A5-pBX" secondAttribute="bottom" constant="15" id="lhA-Uy-c4h"/>
+                            <constraint firstItem="THb-Ap-hKt" firstAttribute="centerY" secondItem="MH6-A5-pBX" secondAttribute="centerY" id="n8l-jX-rVi"/>
+                            <constraint firstItem="bcy-Ti-wEw" firstAttribute="trailing" secondItem="a52-1U-QOM" secondAttribute="trailing" id="nhc-Rw-cZj"/>
+                            <constraint firstItem="c60-ZV-9gl" firstAttribute="leading" secondItem="lLi-lA-tGd" secondAttribute="leadingMargin" constant="50" id="oIc-10-9Kp"/>
+                            <constraint firstItem="P4Y-GE-gXN" firstAttribute="centerX" secondItem="lLi-lA-tGd" secondAttribute="centerX" id="our-R6-lna"/>
+                            <constraint firstItem="MH6-A5-pBX" firstAttribute="top" secondItem="sVj-Fp-EXz" secondAttribute="bottom" priority="750" constant="15" id="wct-es-fsZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ageLabel" destination="sVj-Fp-EXz" id="DN2-RS-UbX"/>
+                        <outlet property="ageNumber" destination="ryp-VP-stu" id="uaP-Xu-0nc"/>
+                        <outlet property="backgroundImageView" destination="a52-1U-QOM" id="byv-iN-gWR"/>
+                        <outlet property="cameraButton" destination="THb-Ap-hKt" id="TEU-Ex-jyg"/>
+                        <outlet property="cameraCenterXConstraint" destination="4IE-Rn-Rks" id="Gfa-eH-7GZ"/>
+                        <outlet property="cameraCenterYConstraint" destination="n8l-jX-rVi" id="EMG-za-TwK"/>
+                        <outlet property="closeButton" destination="BHk-gI-CJ4" id="Izz-TI-CEw"/>
+                        <outlet property="imageView" destination="MH6-A5-pBX" id="wND-wU-hqY"/>
+                        <outlet property="nameLabel" destination="c60-ZV-9gl" id="kSU-oj-BFY"/>
+                        <outlet property="shareButton" destination="0Kl-fz-AHR" id="8dt-he-FEE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r0t-WG-48I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="794.6564885496183" y="-42.253521126760567"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="3" width="62" height="90"/>
         <image name="DefaultGreenIcon" width="200" height="200"/>
+        <image name="backGroundGreen" width="361" height="592"/>
+        <image name="blueCamera" width="36" height="36"/>
+        <image name="leftSwirl" width="52" height="45"/>
+        <image name="nanitLogo" width="59" height="20"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="rightSwirl" width="52" height="45"/>
+        <image name="shareplay" catalog="system" width="128" height="75"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="textColor">
+            <color red="0.22352941176470589" green="0.27058823529411763" blue="0.3843137254901961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -100,7 +242,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

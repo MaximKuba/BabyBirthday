@@ -15,58 +15,53 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var birthdayPicker: UIDatePicker!
     @IBOutlet weak var babyImageView: UIImageView!
     @IBOutlet weak var showBirthdayButton: UIButton!
-
+    
     private var presenter: DetailsPresenter!
-
+    let imagePickerManager = ImagePickerManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         presenter = DetailsPresenter(view: self)
+        setup()
+    }
+    override func viewWillAppear(_ animated: Bool) {
         presenter.getInfo()
-        
+    }
+    
+    private func setup() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapChangePhoto))
         babyImageView.addGestureRecognizer(tap)
         babyImageView.isUserInteractionEnabled = true
         
         nameTextField.addTarget(self, action: #selector(nameChanged), for: .editingChanged)
         birthdayPicker.addTarget(self, action: #selector(birthdayChanged), for: .valueChanged)
-    }
-
-    @objc func didTapChangePhoto() {
-        let alert = UIAlertController(title: "Choose photo source", message: nil, preferredStyle: .actionSheet)
-
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                alert.addAction(UIAlertAction(title: "Take Photo", style: .default) { _ in
-                    self.presentImagePicker(sourceType: .camera)
-                })
-            }
-
-            alert.addAction(UIAlertAction(title: "Choose from Library", style: .default) { _ in
-                self.presentImagePicker(sourceType: .photoLibrary)
-            })
-
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-            present(alert, animated: true, completion: nil)
+        
+        let calendar = Calendar.current
+        let now = Date()
+        birthdayPicker.maximumDate = now
+        if let minDate = calendar.date(byAdding: .year, value: -13, to: now),
+           let adjustedMinDate = calendar.date(byAdding: .day, value: 1, to: minDate) {
+            birthdayPicker.minimumDate = adjustedMinDate
+        }
     }
     
-    func presentImagePicker(sourceType: UIImagePickerController.SourceType) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = sourceType
-        picker.allowsEditing = true
-        present(picker, animated: true)
+    @objc func didTapChangePhoto() {
+        imagePickerManager.present(from: self) { [weak self] image in
+            self?.presenter?.updateImage(image)
+        }
     }
-
+    
+    
     @IBAction func didTapShowBirthday(_ sender: UIButton) {
-        //TODO PRESENT NEXT SCREEN
-
+        
+        presenter.didTapShowBirthday()
     }
-
+    
     @objc private func nameChanged() {
         presenter.updateName(nameTextField.text ?? "")
     }
-
+    
     @objc private func birthdayChanged() {
         presenter.updateBirthday(birthdayPicker.date)
     }
@@ -75,25 +70,14 @@ class DetailsViewController: UIViewController {
 extension DetailsViewController: DetailsView {
     
     func updateUI(with baby: BabyInfo) {
-    
+        
         nameTextField.text = baby.name
         birthdayPicker.date = baby.birthday ?? Date()
-        babyImageView.image = ImageStorage.shared.loadImage(from: baby.imagePath) ?? UIImage(named: "DefaultGreenIcon")
-        setShowButton(enabled: !baby.name.isEmpty)
+        babyImageView.image = ImageStorage.shared.loadImage(from: baby.imagePath) ?? UIImage.init(systemName: "plus.circle.fill")
+        setShowButton(enabled: !baby.name.isEmpty && baby.birthday != nil)
     }
-
+    
     func setShowButton(enabled: Bool) {
         showBirthdayButton.isEnabled = enabled
-    }
-}
-
-extension DetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true)
-
-        let selectedImage = info[.editedImage] as? UIImage ?? info[.originalImage] as? UIImage
-        if let image = selectedImage {
-            presenter.updateImage(image)
-        }
     }
 }
